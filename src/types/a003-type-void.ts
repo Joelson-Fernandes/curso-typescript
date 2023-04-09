@@ -17,3 +17,5 @@ const person = {
 
 noReturn('Joelson', 'Fernandes');
 person.displayName();
+
+export { person };
