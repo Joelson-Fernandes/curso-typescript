@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/validator": "^13.7.14",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.37.0",
@@ -28,5 +29,8 @@
     "dev": "webpack -w"
   },
   "author": "Joelson Fernandes",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "validator": "^13.9.0"
+  }
 }
