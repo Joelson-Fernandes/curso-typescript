@@ -2,49 +2,75 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/webpack/video.ts":
-/*!******************************!*\
-  !*** ./src/webpack/video.ts ***!
-  \******************************/
+/***/ "./src/webpack/votacao.ts":
+/*!********************************!*\
+  !*** ./src/webpack/votacao.ts ***!
+  \********************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-useless-constructor */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.VideoPlayer = void 0;
-class VideoPlayer {
-    constructor(VideoPlayerElements) {
-        this.video = VideoPlayerElements.video;
-        this.playButton = VideoPlayerElements.playButton;
-        this.pauseButton = VideoPlayerElements.pauseButton;
+exports.VotacaoApp = exports.Votacao = void 0;
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-useless-constructor */
+/* eslint-disable max-classes-per-file */
+const form = document.querySelector('.form');
+const inputs = document.querySelectorAll('input');
+// Routing App
+class Votacao {
+    constructor() {
+        this._opcoesDeVoto = [];
     }
-    iniciarEventos() {
-        this.playButton.addEventListener('click', () => {
-            this.playToggle();
-        });
-        this.pauseButton.addEventListener('click', () => {
-            this.pause();
-        });
+    addOpcoesVotos(votacaoOpcoes) {
+        this._opcoesDeVoto.push(votacaoOpcoes);
     }
-    playToggle() {
-        if (this.video.paused) {
-            this.video.play();
+    vote(linguagem, cor) {
+        for (const opcaoVoto of this._opcoesDeVoto) {
+            if (linguagem === opcaoVoto.opcao)
+                opcaoVoto.numeroDeVotos += 1;
+            if (cor === opcaoVoto.opcao)
+                opcaoVoto.numeroDeVotos += 1;
         }
-        else
-            this.video.pause();
     }
-    pause() {
-        this.video.pause();
+    show() {
+        for (const opcaoVoto of this._opcoesDeVoto) {
+            const votosTotais = document.getElementById(opcaoVoto.opcao);
+            if (votosTotais)
+                votosTotais.innerText = `${opcaoVoto.numeroDeVotos}`;
+        }
     }
 }
-exports.VideoPlayer = VideoPlayer;
-const videoPlayer = new VideoPlayer({
-    video: document.querySelector('.video'),
-    playButton: document.querySelector('.startAndPlay'),
-    pauseButton: document.querySelector('.pause'),
+exports.Votacao = Votacao;
+const votacao = new Votacao();
+// define opcoes de votos.
+inputs.forEach((input) => {
+    votacao.addOpcoesVotos({ opcao: input.value, numeroDeVotos: 0 });
 });
-videoPlayer.iniciarEventos();
+class VotacaoApp {
+    constructor(linguagem, cor) {
+        this.linguagem = linguagem;
+        this.cor = cor;
+        this.votacao = [];
+    }
+    addVotos() {
+        votacao.vote(this.linguagem, this.cor);
+    }
+    show() {
+        votacao.show();
+    }
+}
+exports.VotacaoApp = VotacaoApp;
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const linguagemSelecionada = document.querySelector('input[name="linguagem-favorita"]:checked');
+    const corSelecionada = document.querySelector('input[name="cor-favorita"]:checked');
+    const formData = new VotacaoApp(linguagemSelecionada.value, corSelecionada.value);
+    formData.addVotos();
+    formData.show();
+    form.reset();
+});
 
 
 /***/ })
@@ -86,7 +112,8 @@ var exports = __webpack_exports__;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 // import './form-control';
-__webpack_require__(/*! ./video */ "./src/webpack/video.ts");
+// import './video';
+__webpack_require__(/*! ./votacao.ts */ "./src/webpack/votacao.ts");
 
 })();
 

@@ -1,2 +1,3 @@
 // import './form-control';
-import './video';
+// import './video';
+import './votacao.ts';

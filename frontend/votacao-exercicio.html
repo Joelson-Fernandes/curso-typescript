@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/votação.css">
+  <title>Exercicio de Votação</title>
+</head>
+<body>
+    <div>
+      <form action="" id="form" class="form">
+        <h1 style="text-align: center;">Votação</h1>
+        <h3>Qual sua linguagem de programação favorita ?</h3>
+        <label for="python">Python</label>
+        <input type="radio" name="linguagem-favorita" value="python"><br>
+
+        <label for="javascript">JavaScript</label>
+        <input type="radio" name="linguagem-favorita" value="javascript"><br>
+
+        <label for="typescript">Typescript</label>
+        <input type="radio" name="linguagem-favorita" value="typescript"><br>
+
+        <h3>Qual sua cor favorita ?</h3>
+        <label for="azul">Azul</label>
+        <input type="radio" name="cor-favorita" value="azul"><br>
+
+        <label for="vermelho">Vermelho</label>
+        <input type="radio" name="cor-favorita" value="vermelho"><br>
+
+        <label for="verde">Verde</label>
+        <input type="radio" name="cor-favorita" value="verde"><br>
+
+        <input type="submit" style="margin: 20px 0;">
+      </form>
+
+      <section>
+        <h1>Numero de votos</h1>
+        <div class="resultado">
+          <div>
+            <p>python: <span id="python">0</span></p>
+            <p>javascript: <span id="javascript">0</span></p>
+            <p>typescript: <span id="typescript">0</span></p>
+          </div>
+
+          <div>
+            <p>Vermelho: <span id="vermelho">0</span></p>
+            <p>Verde: <span id="verde">0</span></p>
+            <p>Azul: <span id="azul">0</span></p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+</body>
+
+  <script src="assets/js/bundle.js"></script>
+</html>

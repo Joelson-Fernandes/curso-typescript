@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  justify-content: center;
+  background-color: aquamarine;
+}
+
+body div {
+  width: 400px;
+}
+
+.resultado {
+  display: flex;
+}
